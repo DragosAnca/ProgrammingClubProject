@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProgrammingClubProject.Models.DBObjects
+namespace ProgrammingClubProject.Models.DBObject
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -36,15 +36,15 @@ namespace ProgrammingClubProject.Models.DBObjects
     partial void InsertCodeSnippet(CodeSnippet instance);
     partial void UpdateCodeSnippet(CodeSnippet instance);
     partial void DeleteCodeSnippet(CodeSnippet instance);
-    partial void InsertMember(Member instance);
-    partial void UpdateMember(Member instance);
-    partial void DeleteMember(Member instance);
     partial void InsertMembership(Membership instance);
     partial void UpdateMembership(Membership instance);
     partial void DeleteMembership(Membership instance);
     partial void InsertMembershipType(MembershipType instance);
     partial void UpdateMembershipType(MembershipType instance);
     partial void DeleteMembershipType(MembershipType instance);
+    partial void InsertMember(Member instance);
+    partial void UpdateMember(Member instance);
+    partial void DeleteMember(Member instance);
     #endregion
 		
 		public ClubMembershipModelsDataContext() : 
@@ -93,14 +93,6 @@ namespace ProgrammingClubProject.Models.DBObjects
 			}
 		}
 		
-		public System.Data.Linq.Table<Member> Members
-		{
-			get
-			{
-				return this.GetTable<Member>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Membership> Memberships
 		{
 			get
@@ -114,6 +106,14 @@ namespace ProgrammingClubProject.Models.DBObjects
 			get
 			{
 				return this.GetTable<MembershipType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Member> Members
+		{
+			get
+			{
+				return this.GetTable<Member>();
 			}
 		}
 	}
@@ -523,6 +523,432 @@ namespace ProgrammingClubProject.Models.DBObjects
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Memberships")]
+	public partial class Membership : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IDMembership;
+		
+		private System.Guid _IDMember;
+		
+		private System.Guid _IDMembershipType;
+		
+		private System.DateTime _StartDate;
+		
+		private System.Nullable<System.DateTime> _EndDate;
+		
+		private int _Level;
+		
+		private EntityRef<MembershipType> _MembershipType;
+		
+		private EntityRef<Member> _Member;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDMembershipChanging(int value);
+    partial void OnIDMembershipChanged();
+    partial void OnIDMemberChanging(System.Guid value);
+    partial void OnIDMemberChanged();
+    partial void OnIDMembershipTypeChanging(System.Guid value);
+    partial void OnIDMembershipTypeChanged();
+    partial void OnStartDateChanging(System.DateTime value);
+    partial void OnStartDateChanged();
+    partial void OnEndDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnEndDateChanged();
+    partial void OnLevelChanging(int value);
+    partial void OnLevelChanged();
+    #endregion
+		
+		public Membership()
+		{
+			this._MembershipType = default(EntityRef<MembershipType>);
+			this._Member = default(EntityRef<Member>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMembership", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDMembership
+		{
+			get
+			{
+				return this._IDMembership;
+			}
+			set
+			{
+				if ((this._IDMembership != value))
+				{
+					this.OnIDMembershipChanging(value);
+					this.SendPropertyChanging();
+					this._IDMembership = value;
+					this.SendPropertyChanged("IDMembership");
+					this.OnIDMembershipChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMember", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid IDMember
+		{
+			get
+			{
+				return this._IDMember;
+			}
+			set
+			{
+				if ((this._IDMember != value))
+				{
+					if (this._Member.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDMemberChanging(value);
+					this.SendPropertyChanging();
+					this._IDMember = value;
+					this.SendPropertyChanged("IDMember");
+					this.OnIDMemberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMembershipType", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid IDMembershipType
+		{
+			get
+			{
+				return this._IDMembershipType;
+			}
+			set
+			{
+				if ((this._IDMembershipType != value))
+				{
+					if (this._MembershipType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDMembershipTypeChanging(value);
+					this.SendPropertyChanging();
+					this._IDMembershipType = value;
+					this.SendPropertyChanged("IDMembershipType");
+					this.OnIDMembershipTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime NOT NULL")]
+		public System.DateTime StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this.OnEndDateChanging(value);
+					this.SendPropertyChanging();
+					this._EndDate = value;
+					this.SendPropertyChanged("EndDate");
+					this.OnEndDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Level]", Storage="_Level", DbType="Int NOT NULL")]
+		public int Level
+		{
+			get
+			{
+				return this._Level;
+			}
+			set
+			{
+				if ((this._Level != value))
+				{
+					this.OnLevelChanging(value);
+					this.SendPropertyChanging();
+					this._Level = value;
+					this.SendPropertyChanged("Level");
+					this.OnLevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MembershipType_Membership", Storage="_MembershipType", ThisKey="IDMembershipType", OtherKey="IDMembershipType", IsForeignKey=true)]
+		public MembershipType MembershipType
+		{
+			get
+			{
+				return this._MembershipType.Entity;
+			}
+			set
+			{
+				MembershipType previousValue = this._MembershipType.Entity;
+				if (((previousValue != value) 
+							|| (this._MembershipType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MembershipType.Entity = null;
+						previousValue.Memberships.Remove(this);
+					}
+					this._MembershipType.Entity = value;
+					if ((value != null))
+					{
+						value.Memberships.Add(this);
+						this._IDMembershipType = value.IDMembershipType;
+					}
+					else
+					{
+						this._IDMembershipType = default(System.Guid);
+					}
+					this.SendPropertyChanged("MembershipType");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_Membership", Storage="_Member", ThisKey="IDMember", OtherKey="IDMember", IsForeignKey=true)]
+		public Member Member
+		{
+			get
+			{
+				return this._Member.Entity;
+			}
+			set
+			{
+				Member previousValue = this._Member.Entity;
+				if (((previousValue != value) 
+							|| (this._Member.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Member.Entity = null;
+						previousValue.Memberships.Remove(this);
+					}
+					this._Member.Entity = value;
+					if ((value != null))
+					{
+						value.Memberships.Add(this);
+						this._IDMember = value.IDMember;
+					}
+					else
+					{
+						this._IDMember = default(System.Guid);
+					}
+					this.SendPropertyChanged("Member");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MembershipTypes")]
+	public partial class MembershipType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _IDMembershipType;
+		
+		private string _Name;
+		
+		private string _Description;
+		
+		private int _SubscriptionLenthInMonths;
+		
+		private EntitySet<Membership> _Memberships;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDMembershipTypeChanging(System.Guid value);
+    partial void OnIDMembershipTypeChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnSubscriptionLenthInMonthsChanging(int value);
+    partial void OnSubscriptionLenthInMonthsChanged();
+    #endregion
+		
+		public MembershipType()
+		{
+			this._Memberships = new EntitySet<Membership>(new Action<Membership>(this.attach_Memberships), new Action<Membership>(this.detach_Memberships));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMembershipType", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid IDMembershipType
+		{
+			get
+			{
+				return this._IDMembershipType;
+			}
+			set
+			{
+				if ((this._IDMembershipType != value))
+				{
+					this.OnIDMembershipTypeChanging(value);
+					this.SendPropertyChanging();
+					this._IDMembershipType = value;
+					this.SendPropertyChanged("IDMembershipType");
+					this.OnIDMembershipTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubscriptionLenthInMonths", DbType="Int NOT NULL")]
+		public int SubscriptionLenthInMonths
+		{
+			get
+			{
+				return this._SubscriptionLenthInMonths;
+			}
+			set
+			{
+				if ((this._SubscriptionLenthInMonths != value))
+				{
+					this.OnSubscriptionLenthInMonthsChanging(value);
+					this.SendPropertyChanging();
+					this._SubscriptionLenthInMonths = value;
+					this.SendPropertyChanged("SubscriptionLenthInMonths");
+					this.OnSubscriptionLenthInMonthsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MembershipType_Membership", Storage="_Memberships", ThisKey="IDMembershipType", OtherKey="IDMembershipType")]
+		public EntitySet<Membership> Memberships
+		{
+			get
+			{
+				return this._Memberships;
+			}
+			set
+			{
+				this._Memberships.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Memberships(Membership entity)
+		{
+			this.SendPropertyChanging();
+			entity.MembershipType = this;
+		}
+		
+		private void detach_Memberships(Membership entity)
+		{
+			this.SendPropertyChanging();
+			entity.MembershipType = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Members")]
 	public partial class Member : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -758,432 +1184,6 @@ namespace ProgrammingClubProject.Models.DBObjects
 		{
 			this.SendPropertyChanging();
 			entity.Member = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Memberships")]
-	public partial class Membership : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IDMembership;
-		
-		private System.Guid _IDMember;
-		
-		private System.Guid _IDMembershipType;
-		
-		private System.DateTime _StartDate;
-		
-		private System.Nullable<System.DateTime> _EndDate;
-		
-		private int _Level;
-		
-		private EntityRef<Member> _Member;
-		
-		private EntityRef<MembershipType> _MembershipType;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDMembershipChanging(int value);
-    partial void OnIDMembershipChanged();
-    partial void OnIDMemberChanging(System.Guid value);
-    partial void OnIDMemberChanged();
-    partial void OnIDMembershipTypeChanging(System.Guid value);
-    partial void OnIDMembershipTypeChanged();
-    partial void OnStartDateChanging(System.DateTime value);
-    partial void OnStartDateChanged();
-    partial void OnEndDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnEndDateChanged();
-    partial void OnLevelChanging(int value);
-    partial void OnLevelChanged();
-    #endregion
-		
-		public Membership()
-		{
-			this._Member = default(EntityRef<Member>);
-			this._MembershipType = default(EntityRef<MembershipType>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMembership", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDMembership
-		{
-			get
-			{
-				return this._IDMembership;
-			}
-			set
-			{
-				if ((this._IDMembership != value))
-				{
-					this.OnIDMembershipChanging(value);
-					this.SendPropertyChanging();
-					this._IDMembership = value;
-					this.SendPropertyChanged("IDMembership");
-					this.OnIDMembershipChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMember", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid IDMember
-		{
-			get
-			{
-				return this._IDMember;
-			}
-			set
-			{
-				if ((this._IDMember != value))
-				{
-					if (this._Member.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDMemberChanging(value);
-					this.SendPropertyChanging();
-					this._IDMember = value;
-					this.SendPropertyChanged("IDMember");
-					this.OnIDMemberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMembershipType", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid IDMembershipType
-		{
-			get
-			{
-				return this._IDMembershipType;
-			}
-			set
-			{
-				if ((this._IDMembershipType != value))
-				{
-					if (this._MembershipType.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDMembershipTypeChanging(value);
-					this.SendPropertyChanging();
-					this._IDMembershipType = value;
-					this.SendPropertyChanged("IDMembershipType");
-					this.OnIDMembershipTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime NOT NULL")]
-		public System.DateTime StartDate
-		{
-			get
-			{
-				return this._StartDate;
-			}
-			set
-			{
-				if ((this._StartDate != value))
-				{
-					this.OnStartDateChanging(value);
-					this.SendPropertyChanging();
-					this._StartDate = value;
-					this.SendPropertyChanged("StartDate");
-					this.OnStartDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> EndDate
-		{
-			get
-			{
-				return this._EndDate;
-			}
-			set
-			{
-				if ((this._EndDate != value))
-				{
-					this.OnEndDateChanging(value);
-					this.SendPropertyChanging();
-					this._EndDate = value;
-					this.SendPropertyChanged("EndDate");
-					this.OnEndDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Level]", Storage="_Level", DbType="Int NOT NULL")]
-		public int Level
-		{
-			get
-			{
-				return this._Level;
-			}
-			set
-			{
-				if ((this._Level != value))
-				{
-					this.OnLevelChanging(value);
-					this.SendPropertyChanging();
-					this._Level = value;
-					this.SendPropertyChanged("Level");
-					this.OnLevelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_Membership", Storage="_Member", ThisKey="IDMember", OtherKey="IDMember", IsForeignKey=true)]
-		public Member Member
-		{
-			get
-			{
-				return this._Member.Entity;
-			}
-			set
-			{
-				Member previousValue = this._Member.Entity;
-				if (((previousValue != value) 
-							|| (this._Member.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Member.Entity = null;
-						previousValue.Memberships.Remove(this);
-					}
-					this._Member.Entity = value;
-					if ((value != null))
-					{
-						value.Memberships.Add(this);
-						this._IDMember = value.IDMember;
-					}
-					else
-					{
-						this._IDMember = default(System.Guid);
-					}
-					this.SendPropertyChanged("Member");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MembershipType_Membership", Storage="_MembershipType", ThisKey="IDMembershipType", OtherKey="IDMembershipType", IsForeignKey=true)]
-		public MembershipType MembershipType
-		{
-			get
-			{
-				return this._MembershipType.Entity;
-			}
-			set
-			{
-				MembershipType previousValue = this._MembershipType.Entity;
-				if (((previousValue != value) 
-							|| (this._MembershipType.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MembershipType.Entity = null;
-						previousValue.Memberships.Remove(this);
-					}
-					this._MembershipType.Entity = value;
-					if ((value != null))
-					{
-						value.Memberships.Add(this);
-						this._IDMembershipType = value.IDMembershipType;
-					}
-					else
-					{
-						this._IDMembershipType = default(System.Guid);
-					}
-					this.SendPropertyChanged("MembershipType");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MembershipTypes")]
-	public partial class MembershipType : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _IDMembershipType;
-		
-		private string _Name;
-		
-		private string _Description;
-		
-		private int _SubscriptionLenthInMonths;
-		
-		private EntitySet<Membership> _Memberships;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDMembershipTypeChanging(System.Guid value);
-    partial void OnIDMembershipTypeChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    partial void OnSubscriptionLenthInMonthsChanging(int value);
-    partial void OnSubscriptionLenthInMonthsChanged();
-    #endregion
-		
-		public MembershipType()
-		{
-			this._Memberships = new EntitySet<Membership>(new Action<Membership>(this.attach_Memberships), new Action<Membership>(this.detach_Memberships));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMembershipType", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid IDMembershipType
-		{
-			get
-			{
-				return this._IDMembershipType;
-			}
-			set
-			{
-				if ((this._IDMembershipType != value))
-				{
-					this.OnIDMembershipTypeChanging(value);
-					this.SendPropertyChanging();
-					this._IDMembershipType = value;
-					this.SendPropertyChanged("IDMembershipType");
-					this.OnIDMembershipTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubscriptionLenthInMonths", DbType="Int NOT NULL")]
-		public int SubscriptionLenthInMonths
-		{
-			get
-			{
-				return this._SubscriptionLenthInMonths;
-			}
-			set
-			{
-				if ((this._SubscriptionLenthInMonths != value))
-				{
-					this.OnSubscriptionLenthInMonthsChanging(value);
-					this.SendPropertyChanging();
-					this._SubscriptionLenthInMonths = value;
-					this.SendPropertyChanged("SubscriptionLenthInMonths");
-					this.OnSubscriptionLenthInMonthsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MembershipType_Membership", Storage="_Memberships", ThisKey="IDMembershipType", OtherKey="IDMembershipType")]
-		public EntitySet<Membership> Memberships
-		{
-			get
-			{
-				return this._Memberships;
-			}
-			set
-			{
-				this._Memberships.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Memberships(Membership entity)
-		{
-			this.SendPropertyChanging();
-			entity.MembershipType = this;
-		}
-		
-		private void detach_Memberships(Membership entity)
-		{
-			this.SendPropertyChanging();
-			entity.MembershipType = null;
 		}
 	}
 }

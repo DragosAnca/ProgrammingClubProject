@@ -169,16 +169,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\MembershipTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AnnouncementModel.cs" />
     <Compile Include="Models\CodeSnippetModel.cs" />
-    <Compile Include="Models\DBObject\ClubMembershipModels.designer.cs" />
-    <Compile Include="Models\DBObject\ClubMembershipModels1.designer.cs">
+    <Compile Include="Models\DBObject\ClubMembershipModels.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ClubMembershipModels.dbml</DependentUpon>
@@ -211,7 +213,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Models\DBObject\ClubMembershipModels.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>ClubMembershipModels1.designer.cs</LastGenOutput>
+      <LastGenOutput>ClubMembershipModels.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -276,11 +278,6 @@
     <Content Include="Views\MembershipType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Models\DBObject\ClubMembershipModels.dbml.layout">
-      <DependentUpon>ClubMembershipModels.dbml</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -295,6 +292,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\DBObject\ClubMembershipModels.dbml.layout">
+      <DependentUpon>ClubMembershipModels.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -314,7 +316,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61955</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44334/</IISUrl>
+          <IISUrl>http://localhost:44334/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

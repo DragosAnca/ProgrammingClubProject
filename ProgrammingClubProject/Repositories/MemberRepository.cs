@@ -1,5 +1,5 @@
 ﻿using ProgrammingClubProject.Models;
-using ProgrammingClubProject.Models.DBObjects;
+using ProgrammingClubProject.Models.DBObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
