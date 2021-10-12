@@ -96,6 +96,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <Content Include="TestDb\clubmembershiptests.mdf" />
+    <Content Include="TestDb\clubmembershiptests_log.ldf">
+      <DependentUpon>clubmembershiptests.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -106,6 +110,7 @@
       <Name>ProgrammingClubProject</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
