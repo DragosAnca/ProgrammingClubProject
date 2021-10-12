@@ -1,4 +1,5 @@
 ﻿using ProgrammingClubProject.Models;
+using ProgrammingClubProject.Models.ViewModels;
 using ProgrammingClubProject.Repositories;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,9 @@ namespace ProgrammingClubProject.Controllers
 
         // GET: Member/Details/5
         public ActionResult Details(Guid id)
-        {
-            MemberModel memberModel = memberRepository.GetMemberById(id);
-
-            return View("Details", memberModel);
+        {           
+            MemberCodeSnippetsViewModel viewModel = memberRepository.GetMemberCodeSnippets(id);
+            return View("Details",viewModel);
         }
 
         // GET: Member/Create
@@ -62,7 +62,7 @@ namespace ProgrammingClubProject.Controllers
         // POST: Member/Edit/5
         [Authorize (Roles = "Admin, User")]
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Guid id, FormCollection collection)
         {
             try
             {
