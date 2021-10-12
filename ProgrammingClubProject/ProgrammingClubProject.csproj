@@ -170,6 +170,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
+    <Compile Include="Controllers\CodeSnippetsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
@@ -190,8 +191,10 @@
     <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Models\MembershipModel.cs" />
     <Compile Include="Models\MembershipTypeModel.cs" />
+    <Compile Include="Models\ViewModels\MemberCodeSnippetsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AnnouncementRepository.cs" />
+    <Compile Include="Repositories\CodeSnippetRepository.cs" />
     <Compile Include="Repositories\MemberRepository.cs" />
     <Compile Include="Repositories\MembershipTypeRepository.cs" />
     <Compile Include="Startup.cs" />
@@ -227,6 +230,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Home\Index.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -261,21 +265,26 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Announcement\CreateAnnouncement.cshtml" />
-    <Content Include="Views\Announcement\Delete.cshtml" />
-    <Content Include="Views\Announcement\Details.cshtml" />
-    <Content Include="Views\Announcement\EditAnnouncement.cshtml" />
-    <Content Include="Views\Announcement\Index.cshtml" />
-    <Content Include="Views\Member\Create.cshtml" />
+    <Content Include="Views\Announcements\CreateAnnouncement.cshtml" />
+    <Content Include="Views\Announcements\Details.cshtml" />
+    <Content Include="Views\Announcements\EditAnnouncement.cshtml" />
+    <Content Include="Views\Member\CreateMember.cshtml" />
     <Content Include="Views\Member\Delete.cshtml" />
-    <Content Include="Views\Member\Details.cshtml" />
-    <Content Include="Views\Member\Edit.cshtml" />
+    <Content Include="Views\Member\EditMember.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\MembershipType\CreateMembershipType.cshtml" />
     <Content Include="Views\MembershipType\Delete.cshtml" />
     <Content Include="Views\MembershipType\Details.cshtml" />
-    <Content Include="Views\MembershipType\Edit.cshtml" />
+    <Content Include="Views\MembershipType\EditMembershipType.cshtml" />
     <Content Include="Views\MembershipType\Index.cshtml" />
+    <Content Include="Views\CodeSnippets\CreateCodeSnippet.cshtml" />
+    <Content Include="Views\CodeSnippets\Delete.cshtml" />
+    <Content Include="Views\CodeSnippets\Details.cshtml" />
+    <Content Include="Views\CodeSnippets\EditCodeSnippet.cshtml" />
+    <Content Include="Views\CodeSnippets\Index.cshtml" />
+    <Content Include="Views\Member\Details.cshtml" />
+    <Content Include="Views\Announcements\Index.cshtml" />
+    <Content Include="Views\Announcements\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

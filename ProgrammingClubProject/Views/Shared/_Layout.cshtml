@@ -8,8 +8,8 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body style="background-color:powderblue;">
+    <div class="navbar navbar-inverse navbar-fixed-top"; style="background-color: #01355F; ">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,13 +17,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Programming Club", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    
                     <li>@Html.ActionLink("Announcements", "Index", "Announcements")</li>
-                    <li>@Html.ActionLink("MembershipType", "Index", "MembershipType")</li>
+                    <li>@Html.ActionLink("Membership Type", "Index", "MembershipType")</li>
+                    <li>@Html.ActionLink("Member", "Index", "Member")</li>
+                    <li>@Html.ActionLink("Code Snippets", "Index", "CodeSnippets")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,7 +35,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Anca Dragos-Iulian</p>
         </footer>
     </div>
 
