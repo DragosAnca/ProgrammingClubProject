@@ -34,6 +34,7 @@ namespace ProgrammingClubProject.Controllers
         }
 
         // GET: MembershipType/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View("CreateMembershipType");
