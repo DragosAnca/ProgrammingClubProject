@@ -1,5 +1,6 @@
 ﻿using ProgrammingClubProject.Models;
 using ProgrammingClubProject.Models.DBObject;
+using ProgrammingClubProject.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,29 @@ namespace ProgrammingClubProject.Repositories
             this.dbContext = dbContext;
         }
 
+        public MemberCodeSnippetsViewModel GetMemberCodeSnippets(Guid memberID)
+        {
+            MemberCodeSnippetsViewModel memberCodeSnippetsViewModel = new MemberCodeSnippetsViewModel();
+            Member member = dbContext.Members.FirstOrDefault(m => m.IDMember == memberID);
+
+            if (member != null)
+            {
+                memberCodeSnippetsViewModel.Name = member.Name;
+                memberCodeSnippetsViewModel.Position = member.Position;
+                memberCodeSnippetsViewModel.Title = member.Title;
+
+                IQueryable<CodeSnippet> memberCodeSnippets = dbContext.CodeSnippets.Where(c => c.IDMember == memberID);
+                foreach (CodeSnippet code in memberCodeSnippets)
+                {
+                    CodeSnippetModel codeSnippetModel = new CodeSnippetModel();
+                    codeSnippetModel.Title = code.Title;
+                    codeSnippetModel.ContentCode = code.ContentCode;
+                    codeSnippetModel.Revision = code.Revision;
+                    memberCodeSnippetsViewModel.CodeSnippets.Add(codeSnippetModel);
+                }
+            }
+            return memberCodeSnippetsViewModel;
+        }
 
         public void InsertMember(MemberModel memberModel)
         {
